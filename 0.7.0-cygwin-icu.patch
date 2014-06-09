@@ -1,0 +1,18 @@
+On platforms where sizeof(wchar_t) is 2 bytes, UChar is defined as wchar_t:
+
+http://userguide.icu-project.org/icufaq
+
+--- origsrc/plugin-worldclock/lxqtworldclockconfigurationtimezones.cpp	2014-04-30 06:24:36.000000000 -0500
++++ src/plugin-worldclock/lxqtworldclockconfigurationtimezones.cpp	2014-06-08 18:57:49.249761300 -0500
+@@ -100,7 +100,11 @@ int LxQtWorldClockConfigurationTimeZones
+                 delete timeZone;
+             }
+ 
++#ifdef Q_OS_CYGWIN
++            QString qString(QString::fromWCharArray(uString->getBuffer()));
++#else
+             QString qString(QString::fromUtf16(uString->getBuffer()));
++#endif
+             QStringList qStrings(qString.split('/'));
+ 
+             if ((qStrings[0] == "Brazil") || (qStrings[0] == "Canada") || (qStrings[0] == "Chile") || (qStrings[0] == "Cuba") || (qStrings[0] == "Jamaica") || (qStrings[0] == "Mexico") || (qStrings[0] == "Navajo") || (qStrings[0] == "US"))

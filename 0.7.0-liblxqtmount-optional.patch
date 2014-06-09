@@ -1,0 +1,22 @@
+--- origsrc/CMakeLists.txt	2014-04-30 06:24:36.000000000 -0500
++++ src/CMakeLists.txt	2014-06-08 18:38:10.894363200 -0500
+@@ -70,9 +70,6 @@ include ( ${QT_USE_FILE} )
+ find_package(LXQT REQUIRED )
+ include(${LXQT_USE_FILE})
+ 
+-find_package(LXQTMOUNT REQUIRED )
+-include(${LXQTMOUNT_USE_FILE})
+-
+ find_package(QTXDG REQUIRED QUIET)
+ include(${QTXDG_USE_FILE})
+ 
+@@ -129,6 +126,9 @@ if (MOUNT_PLUGIN)
+ 	#  if (NOT UDEV_STABLE)
+ 	#message(WARNING "lubudev is not stable - panel mount plugin is disabled")
+ 	#else (NOT UDEV_STABLE)
++	find_package(LXQTMOUNT REQUIRED )
++	include(${LXQTMOUNT_USE_FILE})
++
+ 	set(ENABLED_PLUGINS ${ENABLED_PLUGINS}  "Mount")
+ 	add_subdirectory( plugin-mount )
+ 	#endif (NOT UDEV_STABLE)

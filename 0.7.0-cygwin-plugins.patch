@@ -1,0 +1,14 @@
+--- origsrc/panel/plugin.cpp	2014-04-30 06:24:36.000000000 -0500
++++ src/panel/plugin.cpp	2014-06-08 18:29:40.718182800 -0500
+@@ -75,7 +75,11 @@ Plugin::Plugin(const LxQt::PluginInfo &d
+     dirs << QProcessEnvironment::systemEnvironment().value("LXQTPANEL_PLUGIN_PATH").split(":");
+     dirs << PLUGIN_DIR;
+ 
++#ifdef Q_OS_CYGWIN
++    QString baseName = QString("cyg%1.dll").arg(desktopFile.id());
++#else
+     QString baseName = QString("lib%1.so").arg(desktopFile.id());
++#endif
+     bool found = false;
+     foreach(QString dirName, dirs)
+     {
