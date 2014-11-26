@@ -1,21 +1,21 @@
---- origsrc/BuildPlugin.cmake	2014-04-30 06:24:36.000000000 -0500
-+++ src/BuildPlugin.cmake	2014-06-08 18:36:19.654000700 -0500
-@@ -47,6 +47,9 @@ MACRO (BUILD_LXQT_PLUGIN NAME)
+--- origsrc/lxqt-panel-0.8.0/BuildPlugin.cmake	2014-10-13 10:27:26.000000000 -0500
++++ src/lxqt-panel-0.8.0/BuildPlugin.cmake	2014-11-25 18:35:50.338806500 -0600
+@@ -65,6 +65,9 @@ MACRO (BUILD_LXQT_PLUGIN NAME)
  
      add_library(${NAME} MODULE ${HEADERS} ${SOURCES} ${MOC_SOURCES} ${${PROJECT_NAME}_QM_FILES} ${QRC_SOURCES} ${UIS} ${DESKTOP_FILES})
-     target_link_libraries(${NAME} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${LXQT_LIBRARIES} ${LIBRARIES})
+     target_link_libraries(${NAME} ${QTX_LIBRARIES} ${LXQT_LIBRARIES} ${LIBRARIES})
 +    if(CYGWIN)
-+      target_link_libraries(${NAME} lxqt-panel)
++        target_link_libraries(${NAME} lxqt-panel)
 +    endif(CYGWIN)
  
      install(TARGETS ${NAME} DESTINATION ${PLUGIN_DIR})
      install(FILES ${CONFIG_FILES}  DESTINATION ${PLUGIN_SHARE_DIR})
---- origsrc/panel/CMakeLists.txt	2014-04-30 06:24:36.000000000 -0500
-+++ src/panel/CMakeLists.txt	2014-06-08 18:28:54.652548000 -0500
-@@ -124,6 +124,7 @@ message(STATUS "Panel plugins location:
+--- origsrc/lxqt-panel-0.8.0/panel/CMakeLists.txt	2014-10-13 10:27:26.000000000 -0500
++++ src/lxqt-panel-0.8.0/panel/CMakeLists.txt	2014-11-25 18:36:10.418856400 -0600
+@@ -131,6 +131,7 @@ message(STATUS "Panel plugins location:
  
  add_executable(${PROJECT} ${lxqt-panel_PUB_H_FILES} ${lxqt-panel_PRIV_H_FILES} ${lxqt-panel_CPP_FILES} ${MOC_SOURCES} ${lxqt-runner_QM_FILES} ${QRC_SOURCES} ${UI_HEADERS})
- target_link_libraries(${PROJECT} ${LIBRARIES} ${QT_LIBRARIES})
+ target_link_libraries(${PROJECT} ${LIBRARIES} ${QTX_LIBRARIES})
 +set_target_properties(${PROJECT} PROPERTIES ENABLE_EXPORTS ON)
  
  install(TARGETS ${PROJECT} RUNTIME DESTINATION bin)

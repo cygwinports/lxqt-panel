@@ -1,7 +1,7 @@
-inherit qt4-cmake
+inherit qt5 cmake
 
 NAME="lxqt-panel"
-VERSION=0.7.0
+VERSION=0.8.0
 RELEASE=1
 CATEGORY="X11"
 SUMMARY="LXQt desktop panel"
@@ -10,13 +10,16 @@ product of the merge between the LXDE-Qt and the Razor-qt projects: A
 lightweight, modular, blazing-fast and user-friendly desktop environment."
 HOMEPAGE="http://lxqt.org/"
 SRC_URI="http://lxqt.org/downloads/lxqt/${VERSION}/${NAME}-${VERSION}.tar.xz"
-SRC_DIR=.
 PATCH_URI="
-	0.7.0-cygwin-cmake.patch
+	http://pkgs.fedoraproject.org/cgit/lxqt-panel.git/plain/lxqt-panel-0.8.0-share-path.patch
+	0.8.0-cygwin-cmake.patch
 	0.7.0-cygwin-icu.patch
+	0.8.0-cygwin-oss.patch
 	0.7.0-cygwin-plugins.patch
-	0.7.0-liblxqtmount-optional.patch
-	0.7.0-no-undefined.patch
+	0.8.0-liblxqtmount-optional.patch
+	0.8.0-no-undefined.patch
 "
 
 CYGCMAKE_ARGS="-DMOUNT_PLUGIN=OFF -DSYSSTAT_PLUGIN=OFF"
+
+export USE_QT5=1
