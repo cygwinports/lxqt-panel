@@ -1,0 +1,20 @@
+--- origsrc/lxqt-panel-0.9.0/panel/resources/panel.conf	2015-02-08 03:31:27.000000000 -0600
++++ src/lxqt-panel-0.9.0/panel/resources/panel.conf	2015-04-28 21:32:43.613997700 -0500
+@@ -1,7 +1,7 @@
+ panels=panel1
+ 
+ [panel1]
+-plugins=mainmenu,desktopswitch,quicklaunch,taskbar,tray,mount,panelvolume,clock
++plugins=mainmenu,desktopswitch,quicklaunch,taskbar,tray,volume,clock
+ position=Bottom
+ desktop=0
+ 
+@@ -32,6 +32,6 @@ type=mount
+ [clock]
+ type=clock
+ 
+-[panelvolume]
++[volume]
+ device=0
+-type=panelvolume
++type=volume
