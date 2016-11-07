@@ -1,7 +1,7 @@
 inherit qt5 cmake
 
 NAME="lxqt-panel"
-VERSION=0.9.0
+VERSION=0.11.0
 RELEASE=1
 CATEGORY="X11"
 SUMMARY="LXQt desktop panel"
@@ -11,11 +11,17 @@ lightweight, modular, blazing-fast and user-friendly desktop environment."
 HOMEPAGE="http://lxqt.org/"
 SRC_URI="http://downloads.lxqt.org/lxqt/${VERSION}/${NAME}-${VERSION}.tar.xz"
 PATCH_URI="
-	0.8.0-cygwin-oss.patch
-	0.9.0-cygwin-plugins.patch
-	0.9.0-no-undefined.patch
-	0.9.0-dllexport.patch
-	0.9.0-config-plugins.patch
+	0.11.0-config-plugins.patch
+	0.11.0-cygwin-oss.patch
+	0.11.0-cygwin-plugins.patch
+	0.11.0-dllexport.patch
 "
 
-CYGCMAKE_ARGS="-DMOUNT_PLUGIN=OFF -DSYSSTAT_PLUGIN=OFF"
+CYGCMAKE_ARGS="
+	-DMOUNT_PLUGIN=OFF
+	-DSENSORS_PLUGIN=OFF
+	-DSYSSTAT_PLUGIN=OFF
+	-DVOLUME_USE_ALSA=OFF
+	-DPULL_TRANSLATIONS=OFF
+	-DWITHOUT_MENU_CACHE=ON
+"

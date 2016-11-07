@@ -1,0 +1,11 @@
+--- origsrc/lxqt-panel-0.11.0/panel/resources/panel.conf	2016-09-23 17:45:47.000000000 -0500
++++ src/lxqt-panel-0.11.0/panel/resources/panel.conf	2016-11-06 18:54:16.362661100 -0600
+@@ -1,7 +1,7 @@
+ panels=panel1
+ 
+ [panel1]
+-plugins=mainmenu,desktopswitch,quicklaunch,taskbar,tray,statusnotifier,mount,volume,clock,showdesktop
++plugins=mainmenu,desktopswitch,quicklaunch,taskbar,tray,statusnotifier,volume,clock,showdesktop
+ position=Bottom
+ desktop=0
+ 
